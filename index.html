@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bici en familia · Murcia</title>
+  <style>
+    :root {
+      --azul: #0019A8;
+      --gris: #f5f6fa;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+    /* Barra superior */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(0, 25, 168, 0.95);
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      backdrop-filter: blur(4px);
+    }
+    .topbar .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+    }
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-size: 0.95em;
+    }
+    .topbar nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-weight: 600;
+    }
+    .topbar a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .topbar a:hover {
+      text-decoration: underline;
+    }
+
+    /* Hero */
+    .summary {
+      background: linear-gradient(135deg, #f9fbff 0%, #eef2ff 40%, #f9fbff 100%);
+      border-bottom: 3px solid var(--azul);
+      padding: 30px 18px 26px;
+    }
+    .summary-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      align-items: stretch;
+    }
+    .summary h1 {
+      margin: 0 0 10px;
+      font-size: 2.3em;
+      color: var(--azul);
+    }
+    .summary p {
+      margin: 5px 0;
+      font-size: 1.1em;
+    }
+    .cta-row {
+      margin-top: 14px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      background: var(--azul);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    .btn.secondary {
+      background: #fff;
+      color: var(--azul);
+      border: 2px solid var(--azul);
+    }
+    /* Slideshow */
+    .hero-slider {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      min-height: 280px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      background: #000;
+    }
+    .hero-slider .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    .hero-slider .slide.active {
+      opacity: 1;
+    }
+    .hero-slider img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-slider .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 14px;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+      color: #fff;
+      font-weight: 700;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+
+    /* Cards */
+    .section {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 18px;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      color: var(--azul);
+    }
+    .card p {
+      margin: 6px 0;
+      color: #444;
+    }
+    .tag {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #eef2ff;
+      color: var(--azul);
+      border-radius: 5px;
+      font-size: 0.9em;
+      font-weight: 700;
+    }
+    .map-thumb {
+      margin-top: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .map-thumb img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="nav-inner">
+      <div class="brand">Bici en familia</div>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="rutas/2026-03-01_campus-contraparada/index.html">Próxima ruta</a>
+        <a href="calendario.html">Calendario</a>
+        <a href="historico.html">Histórico</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="summary">
+    <div class="summary-inner">
+      <div>
+        <h1>Salidas ciclistas en familia por la huerta de Murcia</h1>
+        <p>Quedamos para pedalear con peques, a ritmo tranquilo y con paradas para jugar y almorzar. Rutas seguras, carriles bici y pistas fáciles.</p>
+        <p>Consulta la próxima ruta o revisa el histórico de salidas anteriores.</p>
+        <div class="cta-row">
+          <a class="btn" href="rutas/2026-03-01_campus-contraparada/index.html">Próxima ruta</a>
+          <a class="btn secondary" href="calendario.html">Calendario</a>
+          <a class="btn secondary" href="historico.html">Histórico</a>
+        </div>
+      </div>
+      <div class="hero-slider" aria-label="Fotos de las rutas">
+        <div class="slide active">
+          <img src="slideshow/segura2.png" alt="Carril bici junto al río Segura">
+          <div class="caption">Río Segura al atardecer</div>
+        </div>
+        <div class="slide">
+          <img src="slideshow/pergola.png" alt="Salida en Plaza de Santiago">
+          <div class="caption">Salida en Plaza de Santiago</div>
+        </div>
+        <div class="slide">
+          <img src="slideshow/beniel.png" alt="Huerta de Murcia en bici">
+          <div class="caption">Huerta y caminos tranquilos</div>
+        </div>
+        <div class="slide">
+          <img src="slideshow/monteagudo.png" alt="Vista de Monteagudo">
+          <div class="caption">Castillo de Monteagudo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2 style="margin-top:0;color:var(--azul);">Próxima salida</h2>
+    <div class="card-grid">
+      <div class="card">
+        <span class="tag">1 marzo 2026 · 10:00</span>
+        <h3>Campus – Contraparada – La Ñora</h3>
+        <p>Ruta circular ~39 km con variante corta en tranvía para los más peques.</p>
+        <div class="cta-row" style="margin-top:10px;">
+          <a class="btn" href="rutas/2026-03-01_campus-contraparada/index.html">Detalles</a>
+          <a class="btn secondary" href="https://connect.garmin.com/modern/course/331705650" target="_blank" rel="noopener">Recorrido</a>
+          <a class="btn secondary" href="rutas/2026-03-01_campus-contraparada/index.html#variante">Variante corta</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="margin-bottom:50px;">
+    <h2 style="margin-top:0;color:var(--azul);">¿Cómo funcionamos?</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Ritmo familiar</h3>
+        <p>Paradas frecuentes, carril bici siempre que se puede y tramos fáciles.</p>
+      </div>
+      <div class="card">
+        <h3>Seguridad primero</h3>
+        <p>Casco obligatorio, repuesto básico, agua y comida para los peques.</p>
+      </div>
+      <div class="card">
+        <h3>Transporte público</h3>
+        <p>Usamos tranvía o tren para variantes cortas cuando hace falta.</p>
+      </div>
+      <div class="card">
+        <h3>Comparte</h3>
+        <p>Sube tus fotos y tracks; las rutas antiguas quedan en el histórico.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Slider sencillo del encabezado
+    const slides = Array.from(document.querySelectorAll('.hero-slider .slide'));
+    let slideIndex = 0;
+    if (slides.length) {
+      setInterval(() => {
+        slides[slideIndex].classList.remove('active');
+        slideIndex = (slideIndex + 1) % slides.length;
+        slides[slideIndex].classList.add('active');
+      }, 4500);
+    }
+  </script>
+</body>
+</html>

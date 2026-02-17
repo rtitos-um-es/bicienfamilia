@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ruta Murcia - Beniel - Murcia · Histórico</title>
+  <style>
+    :root { --azul: #0019A8; --gris: #f5f6fa; }
+    body { margin: 0; font-family: Arial, sans-serif; background: #f9f9f9; color: #333; }
+
+    /* Barra superior */
+    .topbar { position: sticky; top: 0; z-index: 20; background: rgba(0,25,168,0.95); color: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.12); backdrop-filter: blur(4px); }
+    .topbar .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; }
+    .brand { font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; font-size: 0.95em; }
+    .topbar nav { display: flex; gap: 18px; flex-wrap: wrap; font-weight: 600; }
+    .topbar a { color: #fff; text-decoration: none; }
+    .topbar a:hover { text-decoration: underline; }
+
+    /* Encabezado / resumen */
+    .summary { background: linear-gradient(135deg, #f9fbff 0%, #eef2ff 40%, #f9fbff 100%); border-bottom: 3px solid var(--azul); padding: 30px 18px 26px; }
+    .summary-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; align-items: stretch; }
+    .summary h1 { margin: 0 0 10px; font-size: 2.2em; color: var(--azul); }
+    .summary p { margin: 5px 0; font-size: 1.1em; }
+    .route-image { margin-top: 12px; display: inline-block; border: 2px solid #ccc; border-radius: 4px; overflow: hidden; background: #fff; }
+    .route-image img { display: block; max-width: 100%; height: auto; }
+    .cta-row { margin-top: 12px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { background: var(--azul); color: #fff; padding: 10px 14px; border-radius: 6px; text-decoration: none; font-weight: 700; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+    .btn.secondary { background: #fff; color: var(--azul); border: 2px solid var(--azul); }
+
+    /* Slideshow */
+    .hero-slider { position: relative; border-radius: 10px; overflow: hidden; min-height: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); background: #000; }
+    .hero-slider .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.8s ease; }
+    .hero-slider .slide.active { opacity: 1; }
+    .hero-slider img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-slider .caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 12px 14px; background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%); color: #fff; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
+
+    /* Contenedor principal de la línea y paradas */
+    .container { max-width: 1100px; margin: 0 auto; padding: 20px; position: relative; }
+    .container::before { content: ""; position: absolute; left: 40px; top: 0; bottom: 0; width: 10px; background: var(--azul); }
+    .timeline-item { position: relative; margin-bottom: 80px; opacity: 0; transform: translateY(50px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .timeline-item.visible { opacity: 1; transform: translateY(0); }
+    .timeline-item .marker { position: absolute; left: 26px; top: 10px; width: 18px; height: 18px; background: #fff; border: 4px solid var(--azul); border-radius: 50%; }
+    .timeline-item.start .marker, .timeline-item.end .marker { border-color: #D50000; }
+    .timeline-item .content { margin-left: 80px; background: #fff; padding: 15px; border-radius: 5px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; gap: 20px; flex-wrap: wrap; }
+    .timeline-item .content .text { flex: 1; min-width: 250px; }
+    .timeline-item .content .text h3 { margin-top: 0; font-size: 1.8em; color: var(--azul); }
+    .timeline-item .content .text .time { font-size: 1.3em; color: #888; margin-bottom: 10px; display: block; }
+    .timeline-item .content .text p { font-size: 1.2em; margin: 10px 0; }
+    .timeline-item .content .text img { max-width: 100%; border-radius: 5px; margin-top: 10px; border: 2px solid #ddd; }
+    .timeline-item .content .map-container { width: 425px; height: 350px; border: 2px solid #ccc; border-radius: 5px; overflow: hidden; }
+    .timeline-item .content .map-container iframe { width: 100%; height: 100%; border: none; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="nav-inner">
+      <div class="brand">Bici en familia</div>
+      <nav>
+        <a href="../../index.html">Inicio</a>
+        <a href="../2026-03-01_campus-contraparada/index.html">Próxima ruta</a>
+        <a href="../../calendario.html">Calendario</a>
+        <a href="../../historico.html">Histórico</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="summary" id="inicio">
+    <div class="summary-inner">
+      <div class="summary-text">
+        <h1>Ruta Murcia - Beniel - Murcia</h1>
+        <p><strong>Fecha:</strong> 23 de febrero de 2025 · <strong>Salida:</strong> 10:30 (Plaza de Santiago)</p>
+        <p><strong>Distancia:</strong> 34 km  | <strong>Duración aproximada:</strong> 4 h en movimiento <br>
+           <strong>Dificultad:</strong> Baja | <strong>Ascenso total:</strong> 90 m</p>
+        <p>Ruta circular fácil por huerta y carril bici, con paradas en Monteagudo, El Esparragal, Beniel y regreso por el río Segura.</p>
+        <div class="cta-row">
+          <a class="btn" href="https://connect.garmin.com/app/course/331698339" target="_blank" rel="noopener">Recorrido</a>
+          <a class="btn secondary" href="../../historico.html">Volver al histórico</a>
+        </div>
+      </div>
+      <div class="hero-slider" aria-label="Fotos de la ruta">
+        <div class="slide active">
+          <img src="img/pergola-slide.png" alt="Salida en Plaza de Santiago">
+          <div class="caption">Salida en Plaza de Santiago</div>
+        </div>
+        <div class="slide">
+          <img src="img/monteagudo-slide.png" alt="Castillo de Monteagudo">
+          <div class="caption">Castillo de Monteagudo</div>
+        </div>
+        <div class="slide">
+          <img src="img/beniel-slide.png" alt="Beniel">
+          <div class="caption">Ecuador de la ruta en Beniel</div>
+        </div>
+        <div class="slide">
+          <img src="img/segura-slide.png" alt="Río Segura">
+          <div class="caption">Regreso por el Río Segura</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="max-width:1100px;margin:20px auto 0;padding:0 18px;">
+    <div class="card" style="border-radius:10px;border:1px solid #e5e5e5;box-shadow:0 4px 16px rgba(0,0,0,0.06);">
+      <h3 style="margin-top:0;color:#0019A8;">Mapa y perfil</h3>
+      <div class="map-thumb">
+        <a href="https://connect.garmin.com/app/course/331698339" target="_blank">
+          <img src="img/ruta-garmin-small.png" alt="Mapa general de la ruta">
+        </a>
+      </div>
+      <div class="map-thumb" style="margin-top:12px;">
+        <a href="https://connect.garmin.com/app/course/331698339" target="_blank">
+          <img src="img/ruta-garmin-map.png" alt="Perfil y trazado en Garmin Connect">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container" id="recorrido">
+    <!-- Inicio: La Pérgola (clase .start para marcador rojo) -->
+    <div class="timeline-item start" id="item-la-pergola">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Plaza de Santiago</h3>
+          <span class="time">Salida: 10:30</span>
+          <p>Punto de partida de la ruta.</p>
+          <img src="img/pergola.png" alt="La Pérgola">
+        </div>
+        <div class="map-container">
+          <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.1280673742294314%2C38.000947986004526%2C-1.124703884124756%2C38.00286286649848&amp;layer=mapnik&amp;marker=38.00190580610484%2C-1.126385079840702" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=38.001906&amp;mlon=-1.126385#map=19/38.001906/-1.126385">Ver el mapa más grande</a></small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parada 1: Castillo de Monteagudo -->
+    <div class="timeline-item" id="item-castillo">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Centro de Visitantes de Monteagudo</h3>
+          <span class="time">11:15</span>
+          <p>Parada en el Centro de Visitantes para conocer las civilizaciones argárica, íbera, romana y árabe.</p>
+          <img src="img/monteagudo.png" alt="Castillo de Monteagudo">
+        </div>
+        <div class="map-container">
+          <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.0996788740158083%2C38.01792442645201%2C-1.096315383911133%2C38.01983886356003&amp;layer=mapnik&amp;marker=38.01888165125738%2C-1.0979971289634705" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=38.018882&amp;mlon=-1.097997#map=19/38.018882/-1.097997">Ver el mapa más grande</a></small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parada 2: Huerta de El Esparragal -->
+    <div class="timeline-item" id="item-huerta">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>El Esparragal</h3>
+          <span class="time">12:00</span>
+          <p>Almuerzo y juegos junto al campo de fútbol.</p>
+          <img src="img/esparragal.png" alt="Huerta de El Esparragal">
+        </div>
+        <div class="map-container">
+          <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.0792484879493716%2C38.03628912778322%2C-1.0758849978446963%2C38.03820308505782&amp;layer=mapnik&amp;marker=38.037246112672854%2C-1.0775667428970337" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=38.037246&amp;mlon=-1.077567#map=19/38.037246/-1.077567">Ver el mapa más grande</a></small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parada 3: Beniel -->
+    <div class="timeline-item" id="item-beniel">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Beniel</h3>
+          <span class="time">14:00</span>
+          <p>Ecuador de la ruta. Comida, descanso y juegos en parque.</p>
+          <img src="img/beniel.png" alt="Beniel">
+        </div>
+        <div class="map-container">
+          <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.0022208094596865%2C38.05346014081528%2C-0.9988573193550111%2C38.05537364926731&amp;layer=mapnik&amp;marker=38.054416336221614%2C-1.0005396789201768" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=38.054416&amp;mlon=-1.000540#map=19/38.054416/-1.000540">Ver el mapa más grande</a></small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parada 4: Río Segura -->
+    <div class="timeline-item" id="item-rio">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Río Segura</h3>
+          <span class="time">16:30</span>
+          <p>Regreso a Murcia por el carril bici junto al río.</p>
+          <img src="img/segura.png" alt="Río Segura">
+        </div>
+        <div class="map-container">
+          <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.127128601074219%2C37.960981944158995%2C-1.0194969177246096%2C38.02226670359084&amp;layer=mapnik&amp;marker=37.99163072374846%2C-1.073312759399414" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=37.99163&amp;mlon=-1.07331#map=14/37.99163/-1.07331">Ver el mapa más grande</a></small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fin: Plaza de la Catedral -->
+    <div class="timeline-item end" id="item-catedral">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Jardín de las Tres Copas</h3>
+          <span class="time">18:00</span>
+          <p>Final del recorrido, merienda y juegos en las calles peatonales cercanas.</p>
+          <img src="img/trescopas.png" alt="Jardín de las Tres Copas">
+        </div>
+        <div class="map-container">
+          <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.1267638206481936%2C37.98864590578636%2C-1.1133098602294924%2C37.99630641255672&amp;layer=mapnik&amp;marker=37.99247625917032%2C-1.1200368404388428" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=37.992476&amp;mlon=-1.120037#map=17/37.992476/-1.120037">Ver el mapa más grande</a></small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Slider sencillo del encabezado
+    const slides = Array.from(document.querySelectorAll('.hero-slider .slide'));
+    let slideIndex = 0;
+    if (slides.length) {
+      setInterval(() => {
+        slides[slideIndex].classList.remove('active');
+        slideIndex = (slideIndex + 1) % slides.length;
+        slides[slideIndex].classList.add('active');
+      }, 4500);
+    }
+
+    // IntersectionObserver para animar los elementos al hacer scroll
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const observerOptions = { threshold: 0.2 };
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    timelineItems.forEach(item => observer.observe(item));
+  </script>
+</body>
+</html>

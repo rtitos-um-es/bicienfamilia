@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ruta familiar 1 marzo 2026</title>
+  <style>
+    /* Estilos generales */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    /* Barra superior */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(0, 25, 168, 0.95);
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      backdrop-filter: blur(4px);
+    }
+    .topbar .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+    }
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-size: 0.95em;
+    }
+    .topbar nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-weight: 600;
+    }
+    .topbar a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .topbar a:hover {
+      text-decoration: underline;
+    }
+
+    /* Encabezado / Resumen de la ruta */
+    .summary {
+      background: linear-gradient(135deg, #f9fbff 0%, #eef2ff 40%, #f9fbff 100%);
+      border-bottom: 3px solid #0019A8;
+      padding: 30px 18px 26px;
+    }
+    .summary-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      align-items: stretch;
+    }
+    .summary h1 {
+      margin: 0 0 10px;
+      font-size: 2.2em;
+      color: #0019A8;
+    }
+    .summary p {
+      margin: 5px 0;
+      font-size: 1.1em;
+    }
+    .summary .route-image {
+      margin-top: 12px;
+      display: inline-block;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .summary .route-image img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+    .cta-row {
+      margin-top: 12px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      background: #0019A8;
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    .btn.secondary {
+      background: #fff;
+      color: #0019A8;
+      border: 2px solid #0019A8;
+    }
+
+    /* Slideshow */
+    .hero-slider {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      min-height: 280px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      background: #000;
+    }
+    .hero-slider .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    .hero-slider .slide.active {
+      opacity: 1;
+    }
+    .hero-slider img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-slider .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 12px 14px;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+      color: #fff;
+      font-weight: 700;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+
+    /* Contenedor principal de la línea y paradas */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+    }
+
+    /* Línea vertical tipo “metro” */
+    .container::before {
+      content: "";
+      position: absolute;
+      left: 40px;
+      top: 0;
+      bottom: 0;
+      width: 10px;                  /* Más gruesa */
+      background: #0019A8;         /* Color “London Underground” */
+    }
+
+    /* Cada elemento de la línea */
+    .timeline-item {
+      position: relative;
+      margin-bottom: 80px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Marcador circular */
+    .timeline-item .marker {
+      position: absolute;
+      left: 26px; /* Centrado en la línea de 10px de grosor */
+      top: 10px;
+      width: 18px;
+      height: 18px;
+      background: #fff;
+      border: 4px solid #0019A8; /* Por defecto, color principal */
+      border-radius: 50%;
+    }
+
+    /* Marcadores de inicio y fin con color distinto */
+    .timeline-item.start .marker {
+      border-color: #D50000; /* Rojo para inicio */
+    }
+    .timeline-item.end .marker {
+      border-color: #D50000; /* Rojo para fin */
+    }
+
+    /* Contenido de cada parada: dos columnas, texto y mapa */
+    .timeline-item .content {
+      margin-left: 80px;
+      background: #fff;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .timeline-item .content .text {
+      flex: 1;
+      min-width: 250px;
+    }
+    .timeline-item .content .text h3 {
+      margin-top: 0;
+      font-size: 1.8em;
+      color: #0019A8;
+    }
+    .timeline-item .content .text .time {
+      font-size: 1.3em;
+      color: #888;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .timeline-item .content .text p {
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+    .timeline-item .content .text img {
+      max-width: 100%;
+      border-radius: 5px;
+      margin-top: 10px;
+      border: 2px solid #ddd;
+    }
+
+    /* Contenedor para el mapa embebido */
+    .timeline-item .content .map-container {
+      width: 425px;
+      height: 350px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .timeline-item .content .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Histórico de rutas */
+    .history {
+      max-width: 900px;
+      margin: 0 auto 40px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      border-top: 3px solid #0019A8;
+    }
+    .history h2 {
+      margin: 0 0 8px;
+      font-size: 1.8em;
+      color: #0019A8;
+    }
+    .history p {
+      margin: 0 0 15px;
+      font-size: 1.05em;
+      color: #555;
+    }
+    .history .history-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .history .history-card {
+      border: 1px solid #e1e1e1;
+      border-left: 4px solid #0019A8;
+      padding: 12px 14px;
+      background: #fdfdfd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .history .history-card .title {
+      font-weight: 700;
+      color: #0019A8;
+      text-decoration: none;
+      font-size: 1.05em;
+    }
+    .history .history-card .title:hover {
+      text-decoration: underline;
+    }
+    .history .history-card .meta {
+      font-size: 0.95em;
+      color: #666;
+      margin-top: 4px;
+    }
+    .history .history-link {
+      padding: 8px 12px;
+      background: #0019A8;
+      color: #fff;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .history .history-link:hover {
+      background: #000f6b;
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="nav-inner">
+      <div class="brand">Bici en familia</div>
+      <nav>
+        <a href="../../index.html">Inicio</a>
+        <a href="./index.html">Próxima ruta</a>
+        <a href="../../calendario.html">Calendario</a>
+        <a href="../../historico.html">Histórico</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="summary" id="inicio">
+    <div class="summary-inner">
+      <div class="summary-text">
+        <h1>Ruta ciclista en familia: Campus – Contraparada – La Ñora</h1>
+        <p><strong>Fecha:</strong> 1 de marzo de 2026 · <strong>Salida:</strong> 10:00 (Plaza de Santiago, Murcia)</p>
+        <p><strong>Distancia:</strong> ~39 km  | <strong>Duración aproximada:</strong> 4 h en movimiento <br>
+           <strong>Dificultad:</strong> Baja-moderada | <strong>Ascenso total:</strong> ~186 m</p>
+        <p>Recorrido circular para familias que combina carril bici urbano, el Campus de Espinardo, un tramo de la Vía Verde del Noroeste y los parajes de la Contraparada y la Rueda de La Ñora. Lleva casco, agua, almuerzo y repuestos básicos. Existe una <strong>variante corta</strong> usando el tranvía para acortar kilómetros; ver detalle al final de la página.</p>
+        <div class="cta-row">
+          <a class="btn" href="https://connect.garmin.com/modern/course/331705650" target="_blank" rel="noopener">Recorrido</a>
+          <a class="btn secondary" href="#recorrido">Paradas</a>
+          <a class="btn secondary" href="#variante">Variante corta</a>
+        </div>
+      </div>
+      <div class="hero-slider" aria-label="Fotos de la ruta">
+        <div class="slide active">
+          <img src="img/segura2-slide.png" alt="Carril bici junto al río Segura">
+          <div class="caption">Carril bici del Río Segura</div>
+        </div>
+        <div class="slide">
+          <img src="img/pergola-slide.png" alt="Salida en Plaza de Santiago">
+          <div class="caption">Salida en Plaza de Santiago</div>
+        </div>
+        <div class="slide">
+          <img src="img/beniel-slide.png" alt="Tramo de huerta">
+          <div class="caption">Tramos de huerta y caminos tranquilos</div>
+        </div>
+        <div class="slide">
+          <img src="img/monteagudo-slide.png" alt="Castillo de Monteagudo al fondo">
+          <div class="caption">Vista hacia Monteagudo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="max-width:1100px;margin:20px auto 0;padding:0 18px;">
+    <div class="card" style="border-radius:10px;border:1px solid #e5e5e5;box-shadow:0 4px 16px rgba(0,0,0,0.06);">
+      <h3 style="margin-top:0;color:#0019A8;">Mapa y perfil</h3>
+      <div class="map-thumb">
+        <a href="https://connect.garmin.com/modern/course/331705650" target="_blank">
+          <img src="img/ruta-garmin-small.png" alt="Mapa de la ruta">
+        </a>
+      </div>
+      <div class="map-thumb" style="margin-top:12px;">
+        <a href="https://connect.garmin.com/modern/course/331705650" target="_blank">
+          <img src="img/ruta-garmin-map.png" alt="Perfil de la ruta">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container" id="recorrido">
+    <!-- Inicio -->
+    <div class="timeline-item start" id="item-salida">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Plaza de Santiago</h3>
+          <span class="time">Salida: 10:00</span>
+          <p>Quedamos frente a la Pérgola. Revisión rápida de bicis y recordatorio de normas de grupo.</p>
+          <img src="img/pergola.png" alt="Plaza de Santiago">
+        </div>
+        <div class="map-container">
+          <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.1280673742294314%2C38.000947986004526%2C-1.124703884124756%2C38.00286286649848&amp;layer=mapnik&amp;marker=38.00190580610484%2C-1.126385079840702" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=38.001906&amp;mlon=-1.126385#map=19/38.001906/-1.126385">Ver el mapa más grande</a></small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parada 1 -->
+    <div class="timeline-item" id="item-campus">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Campus de Espinardo (UMU)</h3>
+          <span class="time">10:30</span>
+          <p>Accedemos por carril bici hasta el campus. Breve parada junto a la Biblioteca General.</p>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Entrada_Biblioteca_General_Campus_de_Espinardo.jpg" alt="Biblioteca General, Campus de Espinardo">
+        </div>
+        <div class="map-container">
+          <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.1715%2C38.0172%2C-1.1655%2C38.0212&amp;layer=mapnik&amp;marker=38.0192%2C-1.1685" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=38.0192&amp;mlon=-1.1685#map=17/38.0192/-1.1685">Ver el mapa más grande</a></small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parada 2 -->
+    <div class="timeline-item" id="item-viaverde">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Vía Verde del Noroeste</h3>
+          <span class="time">11:00</span>
+          <p>Tomamos el antiguo trazado ferroviario hacia el noroeste, tramo cómodo y sin tráfico.</p>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/V%C3%ADa_Verde_del_Noroeste_or_Antigua_v%C3%ADa_Murcia-Caravaca_crosses_Rambla_de_Perea%2C_Los_Ba%C3%B1os_de_Mula%2C_R%C3%ADo_Mula%2C_Spain%2C_2025_February.jpg/960px-V%C3%ADa_Verde_del_Noroeste_or_Antigua_v%C3%ADa_Murcia-Caravaca_crosses_Rambla_de_Perea%2C_Los_Ba%C3%B1os_de_Mula%2C_R%C3%ADo_Mula%2C_Spain%2C_2025_February.jpg" alt="Vía Verde del Noroeste">
+        </div>
+        <div class="map-container">
+          <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.185%2C38.025%2C-1.175%2C38.03&amp;layer=mapnik&amp;marker=38.0275%2C-1.18" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=38.0275&amp;mlon=-1.18#map=16/38.0275/-1.18">Ver el mapa más grande</a></small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parada 3 -->
+    <div class="timeline-item" id="item-contraparada">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Contraparada</h3>
+          <span class="time">12:00</span>
+          <p>Parada de almuerzo en el área recreativa junto al azud del Segura.</p>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Contraparada_-_panoramio.jpg" alt="Azud de la Contraparada">
+        </div>
+        <div class="map-container">
+          <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.222%2C37.993%2C-1.214%2C37.998&amp;layer=mapnik&amp;marker=37.9955%2C-1.218" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=37.9955&amp;mlon=-1.218#map=16/37.9955/-1.218">Ver el mapa más grande</a></small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parada 4 -->
+    <div class="timeline-item" id="item-nora">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Rueda de La Ñora</h3>
+          <span class="time">12:40</span>
+          <p>Visita a la noria hidráulica y fotos de grupo.</p>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Rueda_de_la_%C3%91ora.jpg/960px-Rueda_de_la_%C3%91ora.jpg" alt="Rueda de La Ñora">
+        </div>
+        <div class="map-container">
+          <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.1985%2C37.984%2C-1.1895%2C37.989&amp;layer=mapnik&amp;marker=37.9865%2C-1.194" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=37.9865&amp;mlon=-1.194#map=17/37.9865/-1.194">Ver el mapa más grande</a></small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parada 5 -->
+    <div class="timeline-item" id="item-rio">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Río Segura (carril bici)</h3>
+          <span class="time">13:30</span>
+          <p>Regreso hacia Murcia siguiendo el carril bici del río.</p>
+          <img src="img/segura.png" alt="Río Segura">
+        </div>
+        <div class="map-container">
+          <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.127128601074219%2C37.960981944158995%2C-1.0194969177246096%2C38.02226670359084&amp;layer=mapnik&amp;marker=37.99163072374846%2C-1.073312759399414" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=37.99163&amp;mlon=-1.07331#map=14/37.99163/-1.07331">Ver el mapa más grande</a></small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fin -->
+    <div class="timeline-item end" id="item-catedral">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Jardín de las Tres Copas</h3>
+          <span class="time">14:00</span>
+          <p>Llegada al centro, estiramientos, merienda y juego libre.</p>
+          <img src="img/trescopas.png" alt="Jardín de las Tres Copas">
+        </div>
+        <div class="map-container">
+          <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.1267638206481936%2C37.98864590578636%2C-1.1133098602294924%2C37.99630641255672&amp;layer=mapnik&amp;marker=37.99247625917032%2C-1.1200368404388428" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=37.992476&amp;mlon=-1.120037#map=17/37.992476/-1.120037">Ver el mapa más grande</a></small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="history" style="margin-top: 0;" id="variante">
+    <h2>Variante corta (con tranvía)</h2>
+    <p>Opción pensada para peques: usar el tranvía para recortar parte del recorrido y enlazar solo los tramos más seguros. Consulta y descarga el track:</p>
+    <div class="route-image">
+      <a href="https://connect.garmin.com/modern/course/431707935" target="_blank">
+        <img src="img/ruta-corta-garmin-small.png" alt="Variante corta - vista previa">
+      </a>
+      <a href="https://connect.garmin.com/modern/course/431707935" target="_blank">
+        <img src="img/ruta-corta-garmin-map.png" alt="Variante corta - mapa completo">
+      </a>
+    </div>
+  </div>
+
+  <div class="history" id="historico">
+    <h2>Histórico de rutas</h2>
+    <p>Revisa las salidas anteriores y comparte los detalles con quienes no pudieron asistir.</p>
+    <div class="history-list">
+      <div class="history-card">
+        <div>
+          <a class="title" href="../2025-02-23_murcia-beniel/index.html">Ruta Murcia - Beniel - Murcia</a>
+          <div class="meta">23 de febrero de 2025 · 34 km · Dificultad baja</div>
+        </div>
+        <a class="history-link" href="../2025-02-23_murcia-beniel/index.html">Ver ruta</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Slider sencillo del encabezado
+    const slides = Array.from(document.querySelectorAll('.hero-slider .slide'));
+    let slideIndex = 0;
+    if (slides.length) {
+      setInterval(() => {
+        slides[slideIndex].classList.remove('active');
+        slideIndex = (slideIndex + 1) % slides.length;
+        slides[slideIndex].classList.add('active');
+      }, 4500);
+    }
+
+    // IntersectionObserver para animar los elementos al hacer scroll
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const observerOptions = {
+      threshold: 0.2
+    };
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    timelineItems.forEach(item => observer.observe(item));
+  </script>
+</body>
+</html>

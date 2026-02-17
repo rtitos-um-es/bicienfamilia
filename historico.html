@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Histórico de rutas · Bici en familia</title>
+  <style>
+    :root { --azul:#0019A8; }
+    body { margin:0; font-family: Arial, sans-serif; background:#f9f9f9; color:#333; }
+    .topbar { position: sticky; top:0; z-index:20; background: rgba(0,25,168,0.95); color:#fff; box-shadow:0 2px 6px rgba(0,0,0,0.12); backdrop-filter: blur(4px); }
+    .topbar .nav-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:12px 18px; }
+    .brand { font-weight:800; letter-spacing:0.5px; text-transform:uppercase; font-size:0.95em; }
+    .topbar nav { display:flex; gap:18px; flex-wrap:wrap; font-weight:600; }
+    .topbar a { color:#fff; text-decoration:none; }
+    .topbar a:hover { text-decoration:underline; }
+    .wrap { max-width:1100px; margin:28px auto 40px; padding:0 18px; }
+    h1 { color:var(--azul); margin-top:0; }
+    .cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:16px; }
+    .card { background:#fff; border:1px solid #e8e8e8; border-radius:8px; padding:16px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+    .tag { display:inline-block; padding:4px 8px; background:#eef2ff; color:var(--azul); border-radius:5px; font-size:0.9em; font-weight:700; }
+    .card h3 { margin:8px 0; color:var(--azul); }
+    .card p { margin:6px 0; }
+    .cta { display:inline-block; margin-top:10px; background:var(--azul); color:#fff; padding:10px 12px; border-radius:6px; text-decoration:none; font-weight:700; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="nav-inner">
+      <div class="brand">Bici en familia</div>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="rutas/2026-03-01_campus-contraparada/index.html">Próxima ruta</a>
+        <a href="calendario.html">Calendario</a>
+        <a href="historico.html">Histórico</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <h1>Histórico de rutas</h1>
+    <p>Recopilamos aquí las salidas anteriores para que puedas revisar mapas, fotos y aprendizajes.</p>
+    <div class="cards">
+      <div class="card">
+        <span class="tag">23 febrero 2025</span>
+        <h3>Ruta Murcia - Beniel - Murcia</h3>
+        <p>34 km · Dificultad baja</p>
+        <a class="cta" href="rutas/2025-02-23_murcia-beniel/index.html">Ver ruta</a>
+      </div>
+      <!-- Añade aquí nuevas rutas al completar cada salida -->
+    </div>
+  </div>
+</body>
+</html>
