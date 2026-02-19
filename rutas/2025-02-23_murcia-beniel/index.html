@@ -31,11 +31,6 @@
     .map-thumb { width: 100%; overflow: hidden; border: 1px solid #ddd; border-radius: 6px; background: #fff; }
     .map-thumb img { width: 100%; height: auto; display: block; object-fit: contain; }
 
-    /* Lightbox */
-    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.75); display: flex; align-items: center; justify-content: center; padding: 16px; opacity: 0; pointer-events: none; transition: opacity 0.2s ease; z-index: 999; }
-    .lightbox.open { opacity: 1; pointer-events: auto; }
-    .lightbox img { max-width: 90vw; max-height: 90vh; width: auto; height: auto; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.35); background: #000; }
-    .lightbox .close-btn { position: absolute; top: 16px; right: 16px; background: #fff; color: var(--azul); border: none; border-radius: 50%; width: 38px; height: 38px; font-size: 20px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
 
     /* Slideshow */
     .hero-slider { position: relative; border-radius: 10px; overflow: hidden; min-height: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); background: #000; }
@@ -112,10 +107,14 @@
     <div class="card" style="border-radius:10px;border:1px solid #e5e5e5;box-shadow:0 4px 16px rgba(0,0,0,0.06);">
       <h3 style="margin-top:0;color:#0019A8;">Mapa y perfil</h3>
       <div class="map-thumb">
-        <img class="zoomable-map" src="img/ruta-garmin-small.png" alt="Mapa general de la ruta">
+        <a href="https://connect.garmin.com/app/course/331698339" target="_blank" rel="noopener">
+          <img src="img/ruta-garmin-small.png" alt="Mapa general de la ruta">
+        </a>
       </div>
       <div class="map-thumb" style="margin-top:12px;">
-        <img class="zoomable-map" src="img/ruta-garmin-map.png" alt="Perfil y trazado en Garmin Connect">
+        <a href="https://connect.garmin.com/app/course/331698339" target="_blank" rel="noopener">
+          <img src="img/ruta-garmin-map.png" alt="Perfil y trazado en Garmin Connect">
+        </a>
       </div>
     </div>
   </section>
@@ -218,11 +217,6 @@
     </div>
   </div>
 
-  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
-    <button class="close-btn" aria-label="Cerrar">×</button>
-    <img src="" alt="">
-  </div>
-
   <script>
     // Slider sencillo del encabezado
     const slides = Array.from(document.querySelectorAll('.hero-slider .slide'));
@@ -234,33 +228,6 @@
         slides[slideIndex].classList.add('active');
       }, 4500);
     }
-
-    // Lightbox para mapas
-    const lb = document.querySelector('.lightbox');
-    const lbImg = lb.querySelector('img');
-    const lbClose = lb.querySelector('.close-btn');
-    const openLightbox = (src, alt) => {
-      lbImg.src = src;
-      lbImg.alt = alt || '';
-      lb.classList.add('open');
-      lbClose.focus();
-    };
-    const closeLightbox = () => {
-      lb.classList.remove('open');
-      lbImg.src = '';
-      lbImg.alt = '';
-    };
-    document.querySelectorAll('.zoomable-map').forEach(img => {
-      img.style.cursor = 'zoom-in';
-      img.addEventListener('click', () => openLightbox(img.dataset.full || img.src, img.alt));
-    });
-    lb.addEventListener('click', e => {
-      if (e.target === lb) closeLightbox();
-    });
-    lbClose.addEventListener('click', closeLightbox);
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeLightbox();
-    });
 
     // IntersectionObserver para animar los elementos al hacer scroll
     const timelineItems = document.querySelectorAll('.timeline-item');
