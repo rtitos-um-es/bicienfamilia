@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ruta familiar 14 marzo 2026 · Bici en familia</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #f9f9f9; color: #333; }
+    .topbar { position: sticky; top: 0; z-index: 20; background: rgba(0, 25, 168, 0.95); color: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.12); backdrop-filter: blur(4px); }
+    .topbar .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; }
+    .brand { font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; font-size: 0.95em; }
+    .topbar nav { display: flex; gap: 18px; flex-wrap: wrap; font-weight: 600; }
+    .topbar a { color: #fff; text-decoration: none; }
+    .topbar a:hover { text-decoration: underline; }
+
+    .summary { background: linear-gradient(135deg, #f9fbff 0%, #eef2ff 40%, #f9fbff 100%); border-bottom: 3px solid #0019A8; padding: 30px 18px 26px; }
+    .summary-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; align-items: stretch; }
+    .summary h1 { margin: 0 0 10px; font-size: 2.2em; color: #0019A8; }
+    .summary p { margin: 5px 0; font-size: 1.1em; }
+    .cta-row { margin-top: 12px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { background: #0019A8; color: #fff; padding: 10px 14px; border-radius: 6px; text-decoration: none; font-weight: 700; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+    .btn.secondary { background: #fff; color: #0019A8; border: 2px solid #0019A8; }
+
+    .map-thumb { width: 100%; overflow: hidden; border: 1px solid #ddd; border-radius: 6px; background: #fff; }
+    .map-thumb img { width: 100%; height: auto; display: block; object-fit: contain; }
+
+    .hero-slider { position: relative; border-radius: 10px; overflow: hidden; min-height: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); background: #000; }
+    .hero-slider .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.8s ease; }
+    .hero-slider .slide.active { opacity: 1; }
+    .hero-slider img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-slider .caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 12px 14px; background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%); color: #fff; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 20px; position: relative; }
+    .container::before { content: ""; position: absolute; left: 40px; top: 0; bottom: 0; width: 10px; background: #0019A8; }
+    .timeline-item { position: relative; margin-bottom: 80px; opacity: 0; transform: translateY(50px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .timeline-item.visible { opacity: 1; transform: translateY(0); }
+    .timeline-item .marker { position: absolute; left: 26px; top: 10px; width: 18px; height: 18px; background: #fff; border: 4px solid #0019A8; border-radius: 50%; }
+    .timeline-item.start .marker, .timeline-item.end .marker { border-color: #D50000; }
+    .timeline-item .content { margin-left: 80px; background: #fff; padding: 15px; border-radius: 5px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; gap: 20px; flex-wrap: wrap; }
+    .timeline-item .content .text { flex: 1; min-width: 250px; }
+    .timeline-item .content .text h3 { margin-top: 0; font-size: 1.8em; color: #0019A8; }
+    .timeline-item .content .text .time { font-size: 1.3em; color: #888; margin-bottom: 10px; display: block; }
+    .timeline-item .content .text p { font-size: 1.2em; margin: 10px 0; }
+    .timeline-item .content .text img { max-width: 100%; border-radius: 5px; margin-top: 10px; border: 2px solid #ddd; }
+    .timeline-item .content .map-container { width: 425px; height: 350px; border: 2px solid #ccc; border-radius: 5px; overflow: hidden; }
+    .timeline-item .content .map-container iframe { width: 100%; height: 100%; border: none; }
+
+    .history { max-width: 900px; margin: 0 auto 40px; background: #fff; padding: 20px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); border-top: 3px solid #0019A8; }
+    .history h2 { margin: 0 0 8px; font-size: 1.8em; color: #0019A8; }
+    .history p { margin: 0 0 15px; font-size: 1.05em; color: #555; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="nav-inner">
+      <div class="brand">Bici en familia</div>
+      <nav>
+        <a href="../../index.html">Inicio</a>
+        <a href="./index.html">Próxima ruta</a>
+        <a href="../../calendario.html">Calendario</a>
+        <a href="../../historico.html">Histórico</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="summary" id="inicio">
+    <div class="summary-inner">
+      <div class="summary-text">
+        <h1>Cabezo de Torres - Monteagudo - Palmeral de Zaraiche</h1>
+        <p><strong>Fecha:</strong> 14 de marzo de 2026 · <strong>Salida:</strong> 9:30 (Plaza de Santiago, Murcia)</p>
+        <p><strong>Distancia:</strong> 13 km | <strong>Duración aproximada:</strong> 2 h en movimiento (3,5 h en total)<br>
+           <strong>Dificultad:</strong> Baja | <strong>Ascenso total:</strong> Bajo</p>
+        <p>Este sábado de marzo salimos desde Plaza de Santiago (la Pérgola) para disfrutar de una mañana de primavera por la huerta de Murcia, que en estas fechas está llena de flores y con un paisaje precioso para pedalear en familia. Recorreremos Cabezo de Torres y Monteagudo con ritmo tranquilo, buscando sendas y carriles alternativos de huerta para evitar al máximo el tráfico y disfrutar del entorno con más seguridad. Haremos bici-gymkana y juegos en el Jardín de la Constitución de Cabezo de Torres, almorzaremos en Los Polvorines y terminaremos a la hora de comer en El Palmeral de Zaraiche para quien quiera sumarse después a la comida. Es una ruta muy fácil, pensada para iniciarse y apta para los más peques (desde 5 años).</p>
+        <div class="cta-row">
+          <a class="btn" href="https://connect.garmin.com/app/course/436096110" target="_blank" rel="noopener">Recorrido</a>
+          <a class="btn secondary" href="#recorrido">Paradas</a>
+          <a class="btn secondary" href="#variante">Notas</a>
+        </div>
+      </div>
+      <div class="hero-slider" aria-label="Fotos de la ruta">
+        <div class="slide active">
+          <img src="img/pergola.jpg" alt="Salida en la Pérgola">
+          <div class="caption">Salida en la Pérgola</div>
+        </div>
+        <div class="slide">
+          <img src="img/parada-generica.svg" alt="Cabezo de Torres">
+          <div class="caption">Cabezo de Torres</div>
+        </div>
+        <div class="slide">
+          <img src="img/parada-generica.svg" alt="Los Polvorines">
+          <div class="caption">Los Polvorines</div>
+        </div>
+        <div class="slide">
+          <img src="img/parada-generica.svg" alt="Palmeral de Zaraiche">
+          <div class="caption">Palmeral de Zaraiche</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="max-width:1100px;margin:20px auto 0;padding:0 18px;">
+    <div class="card" style="border-radius:10px;border:1px solid #e5e5e5;box-shadow:0 4px 16px rgba(0,0,0,0.06);">
+      <h3 style="margin-top:0;color:#0019A8;">Mapa y perfil</h3>
+      <p style="margin:6px 0 12px;">Track Garmin enlazado con vista previa del recorrido y perfil de la ruta.</p>
+      <div class="map-thumb">
+        <a href="https://connect.garmin.com/app/course/436096110" target="_blank" rel="noopener">
+          <img src="img/ruta-garmin-small.png" alt="Mapa de la ruta">
+        </a>
+      </div>
+      <div class="map-thumb" style="margin-top:12px;">
+        <a href="https://connect.garmin.com/app/course/436096110" target="_blank" rel="noopener">
+          <img src="img/ruta-garmin-map.png" alt="Perfil de la ruta">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container" id="recorrido">
+    <div class="timeline-item start" id="item-salida">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Plaza de Santiago (la Pérgola)</h3>
+          <span class="time">Salida: 9:30</span>
+          <p>Quedamos en Plaza de Santiago (la Pérgola) para salida en grupo y recordatorio de normas básicas.</p>
+          <img src="img/pergola.jpg" alt="Salida en la Pérgola">
+        </div>
+        <div class="map-container">
+          <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.1280673742294314%2C38.000947986004526%2C-1.124703884124756%2C38.00286286649848&amp;layer=mapnik&amp;marker=38.00190580610484%2C-1.126385079840702" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=38.001906&amp;mlon=-1.126385#map=19/38.001906/-1.126385">Ver el mapa más grande</a></small>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item" id="item-cabezo">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Cabezo de Torres · Jardín de la Constitución (Cabezo de Torres)</h3>
+          <span class="time">10:15</span>
+          <p>Primera parada con bici-gymkana y juegos para peques en el Jardín de la Constitución de Cabezo de Torres.</p>
+          <img src="img/parada-generica.svg" alt="Cabezo de Torres">
+        </div>
+        <div class="map-container">
+          <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.132738267664413%2C38.01526832584887%2C-1.112738267664413%2C38.03126832584887&amp;layer=mapnik&amp;marker=38.02326832584887%2C-1.122738267664413" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=16/38.023268/-1.122738">Ver el mapa más grande</a></small>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item" id="item-larache">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Castillo de Larache (Monteagudo)</h3>
+          <span class="time">11:15</span>
+          <p>Seguimos la ruta pasando junto al castillo de Larache de Monteagudo.</p>
+          <img src="img/parada-generica.svg" alt="Castillo de Larache en Monteagudo">
+        </div>
+        <div class="map-container">
+          <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.1191663235081692%2C38.01881401845518%2C-1.0991663235081692%2C38.03481401845518&amp;layer=mapnik&amp;marker=38.02681401845518%2C-1.1091663235081692" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=16/38.026814/-1.109166">Ver el mapa más grande</a></small>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item" id="item-polvorines">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Zona recreativa de Los Polvorines</h3>
+          <span class="time">12:00</span>
+          <p>Parada de almuerzo y descanso en la zona recreativa.</p>
+          <img src="img/parada-generica.svg" alt="Los Polvorines">
+        </div>
+        <div class="map-container">
+          <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.1108406519339216%2C38.023986464965854%2C-1.0908406519339216%2C38.039986464965854&amp;layer=mapnik&amp;marker=38.031986464965854%2C-1.1008406519339216" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=16/38.031986/-1.100841">Ver el mapa más grande</a></small>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item" id="item-zaraiche">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Huerta de Zarandona · Acequia de Zaraiche</h3>
+          <span class="time">13:15</span>
+          <p>Regreso por la huerta de Zarandona con parada junto a la acequia de Zaraiche.</p>
+          <img src="img/parada-generica.svg" alt="Acequia de Zaraiche">
+        </div>
+        <div class="map-container">
+          <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.124956768881643%2C38.00796788257899%2C-1.104956768881643%2C38.02396788257899&amp;layer=mapnik&amp;marker=38.01596788257899%2C-1.114956768881643" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=16/38.015968/-1.114957">Ver el mapa más grande</a></small>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item end" id="item-palmeral">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>El Palmeral de Zaraiche</h3>
+          <span class="time">14:00</span>
+          <p>Fin de ruta en El Palmeral de Zaraiche.</p>
+          <img src="img/parada-generica.svg" alt="El Palmeral de Zaraiche">
+        </div>
+        <div class="map-container">
+          <iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.1345110535375593%2C38.00099595446708%2C-1.1145110535375593%2C38.01699595446708&amp;layer=mapnik&amp;marker=38.00899595446708%2C-1.1245110535375593" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=16/38.008996/-1.124511">Ver el mapa más grande</a></small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="history" style="margin-top: 0;" id="variante">
+    <h2>Notas de la ruta</h2>
+    <p>Track Garmin disponible y ruta prevista de dificultad baja.</p>
+  </div>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('.hero-slider .slide'));
+    let slideIndex = 0;
+    if (slides.length) {
+      setInterval(() => {
+        slides[slideIndex].classList.remove('active');
+        slideIndex = (slideIndex + 1) % slides.length;
+        slides[slideIndex].classList.add('active');
+      }, 4500);
+    }
+
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const observerOptions = { threshold: 0.2 };
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    timelineItems.forEach(item => observer.observe(item));
+  </script>
+</body>
+</html>
