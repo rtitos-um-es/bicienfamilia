@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ruta familiar 25 octubre 2026 · Bici en familia</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #f9f9f9; color: #333; }
+    .topbar { position: sticky; top: 0; z-index: 20; background: rgba(0, 25, 168, 0.95); color: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.12); backdrop-filter: blur(4px); }
+    .topbar .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; }
+    .brand { font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; font-size: 0.95em; }
+    .topbar nav { display: flex; gap: 18px; flex-wrap: wrap; font-weight: 600; }
+    .topbar a { color: #fff; text-decoration: none; }
+    .topbar a:hover { text-decoration: underline; }
+
+    .summary { background: linear-gradient(135deg, #f9fbff 0%, #eef2ff 40%, #f9fbff 100%); border-bottom: 3px solid #0019A8; padding: 30px 18px 26px; }
+    .summary-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; align-items: stretch; }
+    .summary h1 { margin: 0 0 10px; font-size: 2.2em; color: #0019A8; }
+    .summary p { margin: 5px 0; font-size: 1.1em; }
+    .cta-row { margin-top: 12px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { background: #0019A8; color: #fff; padding: 10px 14px; border-radius: 6px; text-decoration: none; font-weight: 700; }
+    .btn.secondary { background: #fff; color: #0019A8; border: 2px solid #0019A8; }
+
+    .map-thumb { width: 100%; overflow: hidden; border: 1px solid #ddd; border-radius: 6px; background: #fff; }
+    .map-thumb img { width: 100%; height: auto; display: block; object-fit: contain; }
+    .placeholder-img { display: flex; align-items: center; justify-content: center; min-height: 280px; border: 3px dashed #0019A8; border-radius: 10px; background: #fff; color: #0019A8; font-weight: 700; text-align: center; padding: 12px; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 20px; position: relative; }
+    .container::before { content: ""; position: absolute; left: 40px; top: 0; bottom: 0; width: 10px; background: #0019A8; }
+    .timeline-item { position: relative; margin-bottom: 80px; }
+    .timeline-item .marker { position: absolute; left: 26px; top: 10px; width: 18px; height: 18px; background: #fff; border: 4px solid #0019A8; border-radius: 50%; }
+    .timeline-item.start .marker, .timeline-item.end .marker { border-color: #D50000; }
+    .timeline-item .content { margin-left: 80px; background: #fff; padding: 15px; border-radius: 5px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); display: flex; gap: 20px; flex-wrap: wrap; }
+    .timeline-item .content .text { flex: 1; min-width: 250px; }
+    .timeline-item .content .text h3 { margin-top: 0; font-size: 1.8em; color: #0019A8; }
+    .timeline-item .content .text .time { font-size: 1.3em; color: #888; margin-bottom: 10px; display: block; }
+    .timeline-item .content .text p { font-size: 1.2em; margin: 10px 0; }
+    .timeline-item .content .map-container { width: 425px; height: 350px; }
+    .timeline-item .placeholder-img { min-height: 120px; margin-top: 10px; }
+
+    .history { max-width: 900px; margin: 0 auto 40px; background: #fff; padding: 20px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); border-top: 3px solid #0019A8; }
+    .history h2 { margin: 0 0 8px; font-size: 1.8em; color: #0019A8; }
+    .history p { margin: 0 0 15px; font-size: 1.05em; color: #555; }
+    .hero-slider { position: relative; border-radius: 10px; overflow: hidden; min-height: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); background: #000; }
+    .hero-slider .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.8s ease; }
+    .hero-slider .slide.active { opacity: 1; }
+    .hero-slider img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-slider .caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 12px 14px; background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%); color: #fff; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
+    .photos { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+    .photos img { flex: 1 1 220px; max-width: 100%; min-width: 0; border-radius: 5px; border: 2px solid #ddd; object-fit: cover; }
+    .reivindica { border-left: 5px solid #D50000; background: #fff5f5; padding: 10px 14px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="nav-inner">
+      <div class="brand">Bici en familia</div>
+      <nav>
+        <a href="../../index.html">Inicio</a>
+        <a href="./index.html">Próxima ruta</a>
+        <a href="../../calendario.html">Calendario</a>
+        <a href="../../historico.html">Histórico</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="summary" id="inicio">
+    <div class="summary-inner">
+      <div class="summary-text">
+        <h1>Cabezo de Torres - Ermita de Churra - Espinardo</h1>
+        <p><strong>Fecha:</strong> domingo 25 de octubre de 2026 · <strong>Salida:</strong> 10:00 (CEIP La Arboleda, Murcia)</p>
+        <p><strong>Distancia:</strong> [X] km | <strong>Duración aproximada:</strong> [X] h en movimiento (3,5 h en total)<br>
+           <strong>Dificultad:</strong> [por determinar] | <strong>Ascenso total:</strong> [por determinar]</p>
+        <p>Saldremos de la puerta del CEIP La Arboleda. Disfrutaremos de la poca huerta que queda en Zarandona y Churra, haremos juegos en el parque de Cabezo de Torres, subiremos a lo alto del cabezo para ver la ciudad desde un balcón, pararemos en la huerta y la Ermita de Churra, pasaremos por El Puntal y llegaremos hasta Espinardo. Terminaremos en el Parque de la Mujer Trabajadora, junto al Bar Aurora, con el aperitivo.</p>
+        <div class="cta-row">
+          <a class="btn" href="https://connect.garmin.com/app/course/522642184" target="_blank" rel="noopener">Recorrido</a>
+          <a class="btn secondary" href="#recorrido">Paradas</a>
+          <a class="btn secondary" href="#variante">Notas</a>
+        </div>
+      </div>
+      <div class="hero-slider" aria-label="Fotos de la ruta">
+        <div class="slide active">
+          <img src="img/cole-arboleda.jpg" alt="CEIP La Arboleda">
+          <div class="caption">Salida: CEIP La Arboleda</div>
+        </div>
+        <div class="slide">
+          <img src="img/juegos-cabezo.jpg" alt="Juegos en el parque de Cabezo de Torres">
+          <div class="caption">Juegos en el parque de Cabezo de Torres</div>
+        </div>
+        <div class="slide">
+          <img src="img/vistas-cabezo.jpg" alt="Balcón con vistas desde el cabezo">
+          <div class="caption">Balcón con vistas desde el cabezo</div>
+        </div>
+        <div class="slide">
+          <img src="img/huerta-zarandona.jpg" alt="Huerta de Zarandona">
+          <div class="caption">Huerta de Zarandona</div>
+        </div>
+        <div class="slide">
+          <img src="img/caballos-zarandona.jpg" alt="Caballos en Zarandona">
+          <div class="caption">Caballos en Zarandona</div>
+        </div>
+        <div class="slide">
+          <img src="img/flores_churra.jpg" alt="Flores en la huerta de Churra">
+          <div class="caption">Flores en la huerta de Churra</div>
+        </div>
+        <div class="slide">
+          <img src="img/naranjos-puntal.jpg" alt="Naranjos de El Puntal">
+          <div class="caption">Naranjos de El Puntal</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="max-width:1100px;margin:20px auto 0;padding:0 18px;">
+    <div class="card" style="border-radius:10px;border:1px solid #e5e5e5;box-shadow:0 4px 16px rgba(0,0,0,0.06);padding:16px;background:#fff;">
+      <h3 style="margin-top:0;color:#0019A8;">Mapa y perfil</h3>
+      <p style="margin:6px 0 12px;">Track Garmin enlazado con vista previa del recorrido y perfil de la ruta.</p>
+      <div class="map-thumb">
+        <a href="https://connect.garmin.com/app/course/522642184" target="_blank" rel="noopener">
+          <img src="img/ruta-garmin-small.png" alt="Mapa de la ruta">
+        </a>
+      </div>
+      <div class="map-thumb" style="margin-top:12px;">
+        <a href="https://connect.garmin.com/app/course/522642184" target="_blank" rel="noopener">
+          <img src="img/ruta-garmin-map.png" alt="Perfil de la ruta">
+        </a>
+      </div>
+      <p style="margin:12px 0 0;color:#555;"><strong>Nota:</strong> la ruta exacta variará con respecto al track para evitar en lo posible las vías con tráfico.</p>
+    </div>
+  </section>
+
+  <div class="container" id="recorrido">
+    <div class="timeline-item start">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>CEIP La Arboleda</h3>
+          <span class="time">Salida: 10:00</span>
+          <p>Quedamos en la puerta del colegio La Arboleda para salir en grupo y repasar las normas básicas.</p>
+          <div class="photos"><img src="img/cole-arboleda.jpg" alt="Puerta del CEIP La Arboleda"></div>
+        </div>
+        <div class="map-container"><iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.122000%2C38.001300%2C-1.114000%2C38.007700&amp;layer=mapnik&amp;marker=38.004500%2C-1.118000" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=17/38.004500/-1.118000">Ver el mapa más grande</a></small></div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Huerta de Zarandona</h3>
+          <span class="time">10:20</span>
+          <p>Disfrutamos de la poca huerta que queda en Zarandona, con sus caballos, sus acequias y sus caminos.</p>
+          <p class="reivindica"><strong>Huerta en peligro.</strong> La huerta de Zarandona y Churra es de lo poco que queda de la huerta histórica de Murcia. Pedalear por ella es también una forma de reivindicar su protección frente al cemento y al abandono.</p>
+          <div class="photos"><img src="img/huerta-zarandona.jpg" alt="Huerta de Zarandona"></div>
+        </div>
+        <div class="map-container"><iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.119000%2C38.012800%2C-1.111000%2C38.019200&amp;layer=mapnik&amp;marker=38.016000%2C-1.115000" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=17/38.016000/-1.115000">Ver el mapa más grande</a></small></div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Parque de Cabezo de Torres</h3>
+          <span class="time">10:50</span>
+          <p>Parada con juegos para peques y mayores en el parque de Cabezo de Torres.</p>
+          <div class="photos"><img src="img/parque-cabezo.jpg" alt="Parque de Cabezo de Torres"></div>
+        </div>
+        <div class="map-container"><iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.126700%2C38.020100%2C-1.118700%2C38.026500&amp;layer=mapnik&amp;marker=38.023300%2C-1.122700" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=17/38.023300/-1.122700">Ver el mapa más grande</a></small></div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Bici-gymkana y juegos de equilibrio</h3>
+          <span class="time">11:15</span>
+          <p>Haremos juegos de equilibrio y con la bici, carreras de quién llega el último, etc.</p>
+          <div class="photos"><img src="img/juegos-cabezo.jpg" alt="Bici-gymkana y juegos de equilibrio"></div>
+        </div>
+        <div class="map-container"><iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.126700%2C38.020100%2C-1.118700%2C38.026500&amp;layer=mapnik&amp;marker=38.023300%2C-1.122700" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=17/38.023300/-1.122700">Ver el mapa más grande</a></small></div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Lo alto del cabezo · Cabezo de Torres</h3>
+          <span class="time">11:50</span>
+          <p>Subimos a lo alto del cabezo, un balcón con vistas a la ciudad y a la huerta.</p>
+          <div class="photos"><img src="img/vistas-cabezo.jpg" alt="Vistas desde el cabezo"></div>
+        </div>
+        <div class="map-container"><iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.130500%2C38.025300%2C-1.122500%2C38.031700&amp;layer=mapnik&amp;marker=38.028500%2C-1.126500" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=17/38.028500/-1.126500">Ver el mapa más grande</a></small></div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Huerta de Churra y Ermita de Churra</h3>
+          <span class="time">12:20</span>
+          <p>Seguimos por la huerta de Churra y paramos en la Ermita de Churra para descansar y almorzar.</p>
+          <div class="photos"><img src="img/flores_churra.jpg" alt="Flores en la huerta de Churra"></div>
+        </div>
+        <div class="map-container"><iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.152000%2C38.028800%2C-1.144000%2C38.035200&amp;layer=mapnik&amp;marker=38.032000%2C-1.148000" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=17/38.032000/-1.148000">Ver el mapa más grande</a></small></div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>El Puntal</h3>
+          <span class="time">12:40</span>
+          <p>Paso por El Puntal, entre naranjos.</p>
+          <div class="photos"><img src="img/naranjos-puntal.jpg" alt="Naranjos de El Puntal"></div>
+        </div>
+        <div class="map-container"><iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.164000%2C38.036800%2C-1.156000%2C38.043200&amp;layer=mapnik&amp;marker=38.040000%2C-1.160000" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=17/38.040000/-1.160000">Ver el mapa más grande</a></small></div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Espinardo</h3>
+          <span class="time">13:00</span>
+          <p>Llegamos a Espinardo, punto más lejano de la ruta.</p>
+        </div>
+        <div class="map-container"><iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.170500%2C38.020300%2C-1.162500%2C38.026700&amp;layer=mapnik&amp;marker=38.023500%2C-1.166500" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=17/38.023500/-1.166500">Ver el mapa más grande</a></small></div>
+      </div>
+    </div>
+
+    <div class="timeline-item end">
+      <div class="marker"></div>
+      <div class="content">
+        <div class="text">
+          <h3>Regreso · Parque de la Mujer Trabajadora</h3>
+          <span class="time">13:30</span>
+          <p>Regresamos al Parque de la Mujer Trabajadora, junto al Bar Aurora, donde nos tomaremos el aperitivo y terminamos la ruta.</p>
+        </div>
+        <div class="map-container"><iframe width="425" height="350" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.128500%2C38.005800%2C-1.120500%2C38.012200&amp;layer=mapnik&amp;marker=38.009000%2C-1.124500" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=17/38.009000/-1.124500">Ver el mapa más grande</a></small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="history" style="margin-top: 0;" id="variante">
+    <h2>Notas de la ruta</h2>
+    <p>Track Garmin disponible. La ruta exacta variará con respecto al track para evitar en lo posible las vías con tráfico. Horarios, distancia y recomendaciones por confirmar.</p>
+  </div>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('.hero-slider .slide'));
+    let slideIndex = 0;
+    if (slides.length) {
+      setInterval(() => {
+        slides[slideIndex].classList.remove('active');
+        slideIndex = (slideIndex + 1) % slides.length;
+        slides[slideIndex].classList.add('active');
+      }, 4500);
+    }
+  </script>
+</body>
+</html>
